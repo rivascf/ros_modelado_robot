@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--URDF que describe el robot demo-->
+<robot name="robot_demo">
+    <!--Descripcion de eslabones-->
+    <!-- Eslabon base o eslabon 0-->
+    <link name="base_link">
+        <visual>
+            <!--origin: xyz="x(m) y(m) z(m)" rpy="(rads) (rads) (rads)" -->
+            <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.05"/>
+            <geometry>
+                <!--box: size="0.2m 0.3m 0.1m"-->
+                <box size="0.2 0.3 0.1"/>
+            </geometry>    
+            <material name="blanco">
+                <!--color rgba="255 255 255 100%" -->
+                <color rgba="1 1 1 1"/>
+            </material>            
+        </visual>
+        <collision>
+          <geometry>
+            <box size="0.2 0.3 0.1"/>
+          </geometry>  
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia    ixx="1.0"   ixy="0.0"   ixz="0.0" 
+                                    iyy="1.0"   iyz="0.0" 
+                                                izz="1.0"/>
+        </inertial>
+    </link>
+
+    <!-- Eslabon 1 (rueda 1)-->
+    <link name="wheel_1">
+        <visual>
+            <origin rpy="0.0 1.5 0.0" xyz="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.05"/>
+            </geometry>
+            <material name="negro">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="0.0 1.5 0.0" xyz="0.1 0.1 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.05"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1.0"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+        </inertial>
+    </link>
+
+    <!-- Eslabon 2 (rueda 2)-->
+    <link name="wheel_2">
+        <visual>
+            <origin rpy="0.0 1.5 0.0" xyz="-0.1 0.1 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.05"/>
+            </geometry>
+            <material name="negro"/>
+        </visual>
+        <collision>
+            <origin rpy="0.0 1.5 0.0" xyz="-0.1 0.1 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.05"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1.0"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+        </inertial>
+    </link>
+
+    <!-- Eslabon 3 (rueda 3)-->
+    <link name="wheel_3">
+        <visual>
+            <origin rpy="0.0 1.5 0.0" xyz="0.1 -0.1 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.05"/>
+            </geometry>
+            <material name="negro"/>
+        </visual>
+        <collision>
+            <origin rpy="0.0 1.5 0.0" xyz="0.1 -0.1 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.05"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1.0"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+        </inertial>
+    </link>
+
+    <!-- Eslabon 4 (rueda 4)-->
+    <link name="wheel_4">
+        <visual>
+            <origin rpy="0.0 1.5 0.0" xyz="-0.1 -0.1 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.05"/>
+            </geometry>
+            <material name="negro"/>
+        </visual>
+        <collision>
+            <origin rpy="0.0 1.5 0.0" xyz="-0.1 -0.1 0.0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.05"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1.0"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+        </inertial>
+    </link>
+
+    <!-- Descripcion de las articulaciones -->
+    <!-- Articulacion 1: base_link (padre) - wheel_1 (hijo) -->
+    <joint name="base_wheel_1" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_1"/>
+        <axis xyz="1 0 0"/>
+        <origin rpy="0.0 0.0 0.0" xyz="0.1 0.1 0.0"/>
+    </joint>
+    <!-- Articulacion 2: base_link (padre) - wheel_2 (hijo) -->
+    <joint name="base_wheel_2" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_2"/>
+        <axis xyz="1 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+    <!-- Articulacion 3: base_link (padre) - wheel_3 (hijo) -->
+    <joint name="base_wheel_3" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_3"/>
+        <axis xyz="1 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+    <!-- Articulacion 4: base_link (padre) - wheel_4 (hijo) -->
+    <joint name="base_wheel_4" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_4"/>
+        <axis xyz="1 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+    
+
+</robot>
