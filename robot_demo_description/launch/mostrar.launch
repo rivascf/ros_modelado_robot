@@ -6,6 +6,7 @@
     <param name="use_gui" value="$(arg gui)"/>
     <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
-    <node name="rviz" pkg="rviz" type="rviz" if="$(arg gui)" />
+    <node name="rviz" pkg="rviz" type="rviz" 
+        args="-d $(find robot_demo_description)/rviz/robot_demo_rviz_layout.rviz" if="$(arg gui)" />
       
 </launch>

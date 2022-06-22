@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="0.0"/>
+    <arg name="urdf_file" default="$(find robot_demo_description)/urdf/robot_demo.urdf"/>
+    <arg name="robot_name" default="robotdemo"/>
+    <param name="robot_description" command="cat $(arg urdf_file)"/>
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen"
+        respawn="false" args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -model $(arg robot_name) -param robot_description" />
+</launch>        
